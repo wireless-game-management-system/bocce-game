@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4406935, g: 0.48935485, b: 0.569482, a: 1}
+  m_IndirectSpecularColor: {r: 0.44069394, g: 0.48935562, b: 0.5694829, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 74122922}
   - component: {fileID: 74122921}
   - component: {fileID: 74122925}
+  - component: {fileID: 74122926}
   m_Layer: 0
   m_Name: King Ball
   m_TagString: Untagged
@@ -231,6 +232,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d33e4021e3d2c47b02bd564ea8214b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &74122926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74122920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2319615354c70464181576e171668923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &112304128
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +260,7 @@ GameObject:
   - component: {fileID: 112304131}
   - component: {fileID: 112304130}
   - component: {fileID: 112304129}
+  - component: {fileID: 112304137}
   m_Layer: 0
   m_Name: BlueTeamBall3
   m_TagString: Untagged
@@ -261,7 +275,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112304128}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbd107f9fba36644c891f876f4e24096, type: 3}
   m_Name: 
@@ -387,6 +401,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &112304137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112304128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a7a1438c2781b438a4e88716cc2366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &338543482
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +429,7 @@ GameObject:
   - component: {fileID: 338543485}
   - component: {fileID: 338543484}
   - component: {fileID: 338543483}
+  - component: {fileID: 338543491}
   m_Layer: 0
   m_Name: BlueTeamBall2
   m_TagString: Untagged
@@ -417,7 +444,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338543482}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbd107f9fba36644c891f876f4e24096, type: 3}
   m_Name: 
@@ -543,6 +570,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &338543491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338543482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b62b994b61813c4a8adfa0fa7946b4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +692,7 @@ GameObject:
   - component: {fileID: 707984733}
   - component: {fileID: 707984732}
   - component: {fileID: 707984740}
+  - component: {fileID: 707984741}
   m_Layer: 0
   m_Name: RedTeamBall3
   m_TagString: Untagged
@@ -667,7 +707,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707984731}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbd107f9fba36644c891f876f4e24096, type: 3}
   m_Name: 
@@ -807,6 +847,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rd: {fileID: 0}
   moveSpeed: 10
+--- !u!114 &707984741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707984731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed450b277cae1f045bd2460753b8ba62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &759181535
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,8 +949,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759181535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalPosition: {x: 1.234, y: -5, z: 30.2475}
+  m_LocalScale: {x: 3.2799253, y: 1, z: 7.1204658}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -982,7 +1034,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -12.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1037,6 +1089,7 @@ GameObject:
   - component: {fileID: 1024820390}
   - component: {fileID: 1024820389}
   - component: {fileID: 1024820397}
+  - component: {fileID: 1024820398}
   m_Layer: 0
   m_Name: RedTeamBall1
   m_TagString: Untagged
@@ -1051,7 +1104,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024820388}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbd107f9fba36644c891f876f4e24096, type: 3}
   m_Name: 
@@ -1191,6 +1244,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rd: {fileID: 0}
   moveSpeed: 10
+--- !u!114 &1024820398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024820388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf21c0075159d584c98fb56253e3b626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1469468342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,6 +1380,7 @@ GameObject:
   - component: {fileID: 1810344536}
   - component: {fileID: 1810344534}
   - component: {fileID: 1810344535}
+  - component: {fileID: 1810344537}
   m_Layer: 0
   m_Name: BlueTeamBall1
   m_TagString: Untagged
@@ -1435,7 +1501,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810344528}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbd107f9fba36644c891f876f4e24096, type: 3}
   m_Name: 
@@ -1455,6 +1521,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rd: {fileID: 0}
   moveSpeed: 10
+--- !u!114 &1810344537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810344528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82459138d7a26e743a268c0bf536be03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1885960280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,6 +1549,7 @@ GameObject:
   - component: {fileID: 1885960282}
   - component: {fileID: 1885960281}
   - component: {fileID: 1885960289}
+  - component: {fileID: 1885960283}
   m_Layer: 0
   m_Name: RedTeamBall2
   m_TagString: Untagged
@@ -1485,7 +1564,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885960280}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbd107f9fba36644c891f876f4e24096, type: 3}
   m_Name: 
@@ -1505,6 +1584,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   moveSpeed: 10
+--- !u!114 &1885960283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885960280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90621004fe63dab44a5c82b3c3d819fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &1885960284
 Rigidbody:
   m_ObjectHideFlags: 0

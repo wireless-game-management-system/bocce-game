@@ -9,9 +9,9 @@ public class Reset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y < threshold)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        //if(transform.position.y < threshold)
+       // {
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //}
     }
 }
