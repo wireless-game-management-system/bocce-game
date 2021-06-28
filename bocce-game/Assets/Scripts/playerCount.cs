@@ -27,6 +27,10 @@ public class playerCount : MonoBehaviour
     public void done() 
     {
         PlayerPrefs.SetInt("totalPlayer", counter);
+        string redTeamPlayers = string.Join(",", namePlateOne, 0, (counter - 1));
+        string blueTeamPlayers = string.Join(",", namePlateTwo, 0, (counter - 1));
+        PlayerPrefs.SetString("redTeamPlayers", redTeamPlayers);
+        PlayerPrefs.SetString("blueTeamPlayers", blueTeamPlayers);
         SceneManager.LoadScene(sceneBuildIndex: 1);
     }
     // Update is called once per frame
