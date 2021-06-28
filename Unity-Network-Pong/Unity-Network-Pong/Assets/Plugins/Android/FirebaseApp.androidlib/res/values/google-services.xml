@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_android_client_id,@string/default_web_client_id" xmlns:tools="http://schemas.android.com/tools">
+  <string name="gcm_defaultSenderId" translatable="false">761548918013</string>
+  <string name="google_storage_bucket" translatable="false">unity-game-767f2.appspot.com</string>
+  <string name="project_id" translatable="false">unity-game-767f2</string>
+  <string name="google_api_key" translatable="false">AIzaSyCiM7fhj5xfiGC5jeYRQ62oQ6JyP7wkEg8</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCiM7fhj5xfiGC5jeYRQ62oQ6JyP7wkEg8</string>
+  <string name="google_app_id" translatable="false">1:761548918013:android:1ca11718ca8cef5b4e8294</string>
+  <string name="default_android_client_id" translatable="false">761548918013-fp47nteum2vagr2divljvqm25m0vt9po.apps.googleusercontent.com</string>
+  <string name="default_web_client_id" translatable="false">761548918013-4l8sivu7qfji2rmjikae4f6n82v92cnm.apps.googleusercontent.com</string>
+</resources>

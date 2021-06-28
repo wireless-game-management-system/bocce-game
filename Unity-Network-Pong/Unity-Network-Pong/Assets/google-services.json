@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "761548918013",
+    "project_id": "unity-game-767f2",
+    "storage_bucket": "unity-game-767f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761548918013:android:1ca11718ca8cef5b4e8294",
+        "android_client_info": {
+          "package_name": "com.retr0.sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "761548918013-fp47nteum2vagr2divljvqm25m0vt9po.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.retr0.sample",
+            "certificate_hash": "0f1fa40d232f707836e916a0f864c1189dd105a1"
+          }
+        },
+        {
+          "client_id": "761548918013-4l8sivu7qfji2rmjikae4f6n82v92cnm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiM7fhj5xfiGC5jeYRQ62oQ6JyP7wkEg8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "761548918013-4l8sivu7qfji2rmjikae4f6n82v92cnm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
