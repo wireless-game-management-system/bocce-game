@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BocceBall
+  - BoundaryWall
+  - blueBall1
+  - blueBall2
+  - blueBall3
+  - blueBall4
+  - redBall1
+  - redBall2
+  - redBall3
+  - redBall4
   layers:
   - Default
   - TransparentFX
