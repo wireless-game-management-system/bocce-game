@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class move_BB3 : MonoBehaviour
+public class move_B3 : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,9 +13,8 @@ public class move_BB3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (Input.GetKey (KeyCode.M)) {  
-            transform.Translate (0f, 0f, 0.01f); 
+            transform.Translate (0f, 0f, 0.01f);  
     }
 }
 }
