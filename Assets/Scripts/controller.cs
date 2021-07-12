@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Globalization;
+using UnityEngine.SceneManagement;
 
 
 public class controller : MonoBehaviour
@@ -34,14 +35,24 @@ public class controller : MonoBehaviour
          if (input.text =="123")
         {
             Text.text="BELAIRE BEACH CLUB";
-            Text2.text="test";
-            Text3.text="test";
-            Text4.text="test";
+            Text2.text="DRAGONS";
+            Text3.text="CASA";
+            Text4.text="LDV";
             
             btn.SetActive(false);   
 
         }
          
 
+    }
+    public void next_screen()
+    {
+
+    SceneManager.LoadScene("screen2");
+    }
+     public void screen1()
+    {
+
+    SceneManager.LoadScene("screen1");
     }
 }
