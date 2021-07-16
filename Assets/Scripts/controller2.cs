@@ -40,17 +40,14 @@ public class controller2 : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-       
-        int x= Int32.Parse(input.text);
-        int minutes= x % 60;
-        int hours=x/60;
+       if (input.text!="")
+       {
+        
+        int y= Int32.Parse(input.text);
+        int minutes= y % 60;
+        int hours=y/60;
         display2.text= hours.ToString("00")+ ':' +minutes.ToString("00");
-
-
-
-    }
-    public void play()
-    {
+       }
         int x=0;
         if (input.text=="")
         {x++;}
@@ -58,11 +55,24 @@ public class controller2 : MonoBehaviour
         {x++;}
          if (input2.text=="")
         {x++;} 
-        
-            if (x==0)
 
-            {SceneManager.LoadScene("screen0");}
+         if (Input.GetKey (KeyCode.P)) {  
+            SceneManager.LoadScene("screen1"); 
+         }
+            if (x==0)
+            {
+                 if (Input.GetKey (KeyCode.N)) {  
+            SceneManager.LoadScene("screen3"); 
+            }}
+
+           
             else {display0.text="All fields must be filled";}
 
+       
+
     }
+    
+    
+
+
 }

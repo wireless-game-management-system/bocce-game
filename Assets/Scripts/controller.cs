@@ -45,14 +45,15 @@ public class controller : MonoBehaviour
          
 
     }
-    public void next_screen()
+    void Update()
+    {  
+         
+         if (input.text =="123")
     {
-
-    SceneManager.LoadScene("screen2");
+        if (Input.GetKey (KeyCode.N)) {  
+            SceneManager.LoadScene("screen2"); 
     }
-     public void screen1()
-    {
+}}
 
-    SceneManager.LoadScene("screen1");
-    }
+       
 }
