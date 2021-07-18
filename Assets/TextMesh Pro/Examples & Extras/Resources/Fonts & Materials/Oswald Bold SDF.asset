@@ -49,7 +49,6 @@ Material:
     - _BumpFace: 0
     - _BumpOutline: 0
     - _ColorMask: 15
-    - _CullMode: 0
     - _Diffuse: 0.5
     - _FaceDilate: 0
     - _FaceUVSpeedX: 0
@@ -116,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hashCode: 1490843414
   material: {fileID: 2147374}
-  materialHashCode: 1112331510
+  materialHashCode: -1516456483
   m_Version: 1.1.0
   m_SourceFontFileGUID: c9f6d0e7bc8541498c9a4799ba184ede
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: c9f6d0e7bc8541498c9a4799ba184ede,
@@ -148,8 +147,6 @@ MonoBehaviour:
   m_AtlasTextures:
   - {fileID: 28256370963634744}
   m_AtlasTextureIndex: 0
-  m_IsMultiAtlasTexturesEnabled: 0
-  m_ClearDynamicDataOnBuild: 1
   m_UsedGlyphRects: []
   m_FreeGlyphRects:
   - m_X: 0
@@ -186,9 +183,6 @@ MonoBehaviour:
   m_glyphInfoList: []
   m_KerningTable:
     kerningPairs: []
-  m_FontFeatureTable:
-    m_GlyphPairAdjustmentRecords: []
-  fallbackFontAssets: []
   m_FallbackFontAssetTable: []
   m_CreationSettings:
     sourceFontFileName: 
