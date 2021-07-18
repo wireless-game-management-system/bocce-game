@@ -7,48 +7,48 @@ using System.Globalization;
 using UnityEngine.SceneManagement;
 using System.Data;
 using System.Configuration;
-using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
 public class controller0 : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]
-     private GameObject btn;
+    //[SerializeField]
+     //private GameObject btn;
     
-   public void next_screen()
-    {    
+   //public void next_screen()
+    //{    
 
-     MySql.Data.MySqlClient.MySqlConnection connection;
-    string server = "sql1.njit.edu";
-    string database = "gnn3";
-    string uid = "gnn3";
-    string password = "*******";
-    string connectionString;
-    connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-    database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
-
-
-    connection = new MySqlConnection(connectionString);
-
-    try
-    {
-        connection.Open();
-        if (connection.State == ConnectionState.Open)
-        {
-            print("connected");
-        }
-        else
-        {
-            print("Database connection failed.");
-        }
+    // MySql.Data.MySqlClient.MySqlConnection connection;
+    //string server = "sql1.njit.edu";
+    //string database = "gnn3";
+    //string uid = "gnn3";
+    //string password = "*******";
+    //string connectionString;
+    //connectionString = "SERVER=" + server + ";" + "DATABASE=" +
+    //database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
 
-    }
-    catch (Exception ex)
-    {
-        print( "Error occured. Please try again later.");
-    }
+    //connection = new MySqlConnection(connectionString);
 
-    connection.Close();
+    ///try
+    //{
+        //connection.Open();
+        //if (connection.State == ConnectionState.Open)
+      //  {
+      //      print("connected");
+     //   }
+        //else
+        //{
+        //    print("Database connection failed.");
+      //  }
+
+
+    //}
+    //catch (Exception ex)
+    //{
+     //   print( "Error occured. Please try again later.");
+   // }
+
+    //connection.Close();
        
         //float distance_B1=Vector3.Distance( GameObject.Find("Blue1").transform.position,  GameObject.Find("King Ball").transform.position);
         //float distance_B2=Vector3.Distance( GameObject.Find("Blue2").transform.position,  GameObject.Find("King Ball").transform.position);
@@ -58,7 +58,7 @@ public class controller0 : MonoBehaviour
         //float distance_R3=Vector3.Distance( GameObject.Find("Red3").transform.position,  GameObject.Find("King Ball").transform.position);
        
        //SceneManager.LoadScene("screen2");
-    }
+   // }
 
    
 }
