@@ -26,7 +26,7 @@ public class controller : MonoBehaviour
     public void Awake()
 
     {
-       
+        // DontDestroyOnLoad(gameObject);
          Text5.text=  DateTime.Today.ToString("MM/dd/yyyy");
         
     } 
@@ -43,17 +43,19 @@ public class controller : MonoBehaviour
 
         }
          
-
+   
     }
     void Update()
     {  
          
          if (input.text =="123")
     {
-        if (Input.GetKey (KeyCode.N)) {  
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {  
             SceneManager.LoadScene("screen2"); 
     }
-}}
+}
+
+}
 
        
 }

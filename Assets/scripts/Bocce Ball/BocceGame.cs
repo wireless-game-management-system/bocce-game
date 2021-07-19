@@ -103,6 +103,15 @@ public class BocceGame : MonoBehaviour
 	
     void Update()
     {
+         if (Input.GetKeyDown(KeyCode.LeftArrow)) {  
+            SceneManager.LoadScene("screen3"); 
+         }
+            
+            
+                 if (Input.GetKeyDown(KeyCode.RightArrow)) {  
+            SceneManager.LoadScene("screen4"); 
+            
+    }
         // pausing
         if (Input.GetKeyDown(KeyCode.Escape))
             TogglePause();

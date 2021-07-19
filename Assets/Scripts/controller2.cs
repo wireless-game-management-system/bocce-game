@@ -35,12 +35,18 @@ public class controller2 : MonoBehaviour
     void Start()
     {
         display.text=  DateTime.Now.ToString("HH:mm:ss tt");
+       
     }
 
     // Update is called once per frame
     public void Update()
+
     {
+
+        
        if (input.text!="")
+    
+    
        {
         
         int y= Int32.Parse(input.text);
@@ -56,12 +62,12 @@ public class controller2 : MonoBehaviour
          if (input2.text=="")
         {x++;} 
 
-         if (Input.GetKey (KeyCode.P)) {  
+         if (Input.GetKeyDown(KeyCode.LeftArrow)) {  
             SceneManager.LoadScene("screen1"); 
          }
             if (x==0)
             {
-                 if (Input.GetKey (KeyCode.N)) {  
+                  if (Input.GetKeyDown(KeyCode.RightArrow)) {  
             SceneManager.LoadScene("screen3"); 
             }}
 
