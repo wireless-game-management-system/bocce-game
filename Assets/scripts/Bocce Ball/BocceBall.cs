@@ -6,6 +6,63 @@ using System.Linq;
 public class BocceBall : MonoBehaviour
 {
     private Vector3 lastPosition;
+
+    MeshRenderer defaultSetting;
+    private Material matWhite;
+    private Material defaultGameObjectMaterial;
+    private GameObject currentGameObjectName;
+
+    void Start()
+    {
+        defaultSetting = GetComponent<MeshRenderer>();
+        matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        defaultGameObjectMaterial = GameObject.Find("WestWall").GetComponent<MeshRenderer>().material;
+    }
+
+    void ResetMaterial()
+    {
+        currentGameObjectName.GetComponent<MeshRenderer>().material = defaultGameObjectMaterial;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "WestWall")
+        {
+            //If the GameObject's name matches the one you suggest, output this message in the console
+            Debug.Log("Collsion happened at WestWall");
+            collision.gameObject.GetComponent<Renderer>().material = matWhite;
+            currentGameObjectName = collision.gameObject;
+            Invoke("ResetMaterial", .3f);
+        }
+
+        if (collision.gameObject.name == "EastWall")
+        {
+            //If the GameObject's name matches the one you suggest, output this message in the console
+            Debug.Log("Collsion happened at EastWall");
+            collision.gameObject.GetComponent<Renderer>().material = matWhite;
+            currentGameObjectName = collision.gameObject;
+            Invoke("ResetMaterial", .3f);
+        }
+
+        if (collision.gameObject.name == "NorthWall")
+        {
+            //If the GameObject's name matches the one you suggest, output this message in the console
+            Debug.Log("Collsion happened at NorthWall");
+            collision.gameObject.GetComponent<Renderer>().material = matWhite;
+            currentGameObjectName = collision.gameObject;
+            Invoke("ResetMaterial", .3f);
+        }
+
+        if (collision.gameObject.name == "SouthWall")
+        {
+            //If the GameObject's name matches the one you suggest, output this message in the console
+            Debug.Log("Collsion happened at SouthWall");
+            collision.gameObject.GetComponent<Renderer>().material = matWhite;
+            currentGameObjectName = collision.gameObject;
+            Invoke("ResetMaterial", .3f);
+        }
+    }
+
     public bool IsMoving
     {
         get
@@ -28,19 +85,19 @@ public class BocceBall : MonoBehaviour
             {
                 switch (gameObject.name)
                 {
-                    case "East Wall":
+                    case "EastWall":
                         if (transform.position.x > gameObject.transform.position.x)
                             return false;
                         break;
-                    case "West Wall":
+                    case "WestWall":
                         if (transform.position.x < gameObject.transform.position.x)
                             return false;
                         break;
-                    case "North Wall":
+                    case "NorthWall":
                         if (transform.position.z > gameObject.transform.position.z)
                             return false;
                         break;
-                    case "South Wall":
+                    case "SouthWall":
                         if (transform.position.z < gameObject.transform.position.z)
                             return false;
                         break;
