@@ -22,7 +22,18 @@ public class BocceGame : MonoBehaviour
     // cameras
     public Camera MainCamera;
     public Camera PlayerCamera;
-    
+
+    public Image redBall1;
+    public Image redBall2;
+    public Image redBall3;
+    public Image redBall4;
+
+    public Image blueBall1;
+    public Image blueBall2;
+    public Image blueBall3;
+    public Image blueBall4;
+
+
     // game variables
     const int NumTeams = 2;
     const float MaxBallForce = 1000f;
@@ -136,7 +147,48 @@ public class BocceGame : MonoBehaviour
                         {                        
                             currentBall = CreateBall(currentTeam);
                             teamBalls [currentTeam] -= 1;
-                        
+
+                            if(currentTeam == 0)
+                            {
+                                if(teamBalls[currentTeam] == 3)
+                                {
+                                    blueBall4.enabled = false;
+                                }
+                                else if(teamBalls[currentTeam] == 2)
+                                {
+                                    blueBall3.enabled = false;
+                                }
+                                else if(teamBalls[currentTeam] == 1)
+                                {
+                                    blueBall2.enabled = false;
+                                }
+                                else if(teamBalls[currentTeam] == 0)
+                                {
+                                    blueBall1.enabled = false;
+                                }
+                            }
+
+                            if (currentTeam == 1)
+                            {
+                                if (teamBalls[currentTeam] == 3)
+                                {
+                                    redBall1.enabled = false;
+                                }
+                                else if (teamBalls[currentTeam] == 2)
+                                {
+                                    redBall2.enabled = false;
+                                }
+                                else if (teamBalls[currentTeam] == 1)
+                                {
+                                    redBall3.enabled = false;
+                                }
+                                else if (teamBalls[currentTeam] == 0)
+                                {
+                                    redBall4.enabled = false;
+                                }
+                            }
+
+
                             ThrowBall(PlayerCamera.gameObject.transform.forward * (MaxBallForce * BallForceBar.value));
                         
                             SetGameMode(GameMode.AimingFinish);
@@ -181,9 +233,12 @@ public class BocceGame : MonoBehaviour
                                 BocceBall jackComponent = jack.GetComponent<BocceBall>();
                                 if (jackComponent && !jackComponent.InBounds)
                                 {
+                                    Invoke("displayMessage", 0.5f);
                                     // jack is out of bounds
                                     SetGameMode(GameMode.Setup);
-                                } else
+                                } 
+
+                                else
                                     SetGameMode(teamBalls.Sum() > 0 ? GameMode.Aiming : GameMode.RoundResult);
                             }
                         } else
@@ -192,6 +247,16 @@ public class BocceGame : MonoBehaviour
                     }
                 case GameMode.RoundResult:
                     {
+                        blueBall1.enabled = true;
+                        blueBall2.enabled = true;
+                        blueBall3.enabled = true;
+                        blueBall4.enabled = true;
+
+                        redBall1.enabled = true;
+                        redBall2.enabled = true;
+                        redBall3.enabled = true;
+                        redBall4.enabled = true;
+
                         if (Input.GetKeyDown(KeyCode.Space))
                         {
                             if (teamScore.Max() >= WinningScore)
@@ -218,9 +283,11 @@ public class BocceGame : MonoBehaviour
         if (!Paused && !focusStatus)
             Pause();
     }
-    
+
     #endregion
-    
+    void displayMessage() {
+        SetHintMessageText("Invalid Throw!!");
+    }
     bool AreBallsMoving()
     {
         IEnumerable<GameObject> gameObjects = GameObject.FindGameObjectsWithTag("BocceBall");
@@ -311,8 +378,8 @@ public class BocceGame : MonoBehaviour
                     foreach (GameObject gameObject in gameObjects)
                         GameObject.Destroy(gameObject);
                     jack = null;
-                
-                    SetMessageText("Throwing the jack!");
+
+                    SetHintMessageText("Throwing the jack!");
                     break;
                 }
             case GameMode.Aiming:
