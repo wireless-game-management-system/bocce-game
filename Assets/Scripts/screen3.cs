@@ -33,15 +33,15 @@ public class screen3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+         Team1.text=PlayerPrefs.GetString("team1");
+        Team2.text=PlayerPrefs.GetString("team2");
     }
 
     // Update is called once per frame
     void Update()
     {
 
-       Team1.text=PlayerPrefs.GetString("team1");
-        Team2.text=PlayerPrefs.GetString("team1");
+      
         PlayerPrefs.SetString("player1_team1", input1.text);
          PlayerPrefs.SetString("player2_team1", input2.text);
           PlayerPrefs.SetString("player3_team1", input3.text);
