@@ -12,6 +12,8 @@ public class BocceBall : MonoBehaviour
     private Material defaultGameObjectMaterial;
     private GameObject currentGameObjectName;
 
+    private bool touchedBoundary = false;
+
     void Start()
     {
         defaultSetting = GetComponent<MeshRenderer>();
@@ -30,6 +32,7 @@ public class BocceBall : MonoBehaviour
         {
             //If the GameObject's name matches the one you suggest, output this message in the console
             Debug.Log("Collsion happened at WestWall");
+            touchedBoundary = true;
             collision.gameObject.GetComponent<Renderer>().material = matWhite;
             currentGameObjectName = collision.gameObject;
             Invoke("ResetMaterial", .3f);
@@ -39,6 +42,7 @@ public class BocceBall : MonoBehaviour
         {
             //If the GameObject's name matches the one you suggest, output this message in the console
             Debug.Log("Collsion happened at EastWall");
+            touchedBoundary = true;
             collision.gameObject.GetComponent<Renderer>().material = matWhite;
             currentGameObjectName = collision.gameObject;
             Invoke("ResetMaterial", .3f);
@@ -48,6 +52,7 @@ public class BocceBall : MonoBehaviour
         {
             //If the GameObject's name matches the one you suggest, output this message in the console
             Debug.Log("Collsion happened at NorthWall");
+            touchedBoundary = true;
             collision.gameObject.GetComponent<Renderer>().material = matWhite;
             currentGameObjectName = collision.gameObject;
             Invoke("ResetMaterial", .3f);
@@ -57,6 +62,7 @@ public class BocceBall : MonoBehaviour
         {
             //If the GameObject's name matches the one you suggest, output this message in the console
             Debug.Log("Collsion happened at SouthWall");
+            touchedBoundary = true;
             collision.gameObject.GetComponent<Renderer>().material = matWhite;
             currentGameObjectName = collision.gameObject;
             Invoke("ResetMaterial", .3f);
@@ -87,19 +93,43 @@ public class BocceBall : MonoBehaviour
                 {
                     case "EastWall":
                         if (transform.position.x > gameObject.transform.position.x)
+                        {
                             return false;
+                        }
+                        if (touchedBoundary)
+                        {
+                            return false;
+                        }
                         break;
                     case "WestWall":
                         if (transform.position.x < gameObject.transform.position.x)
+                        {
                             return false;
+                        }
+                        if (touchedBoundary)
+                        {
+                            return false;
+                        }
                         break;
                     case "NorthWall":
                         if (transform.position.z > gameObject.transform.position.z)
+                        {
                             return false;
+                        }
+                        if (touchedBoundary)
+                        {
+                            return false;
+                        }
                         break;
                     case "SouthWall":
                         if (transform.position.z < gameObject.transform.position.z)
+                        {
                             return false;
+                        }
+                        if (touchedBoundary)
+                        {
+                            return false;
+                        }
                         break;
                 }
             }
