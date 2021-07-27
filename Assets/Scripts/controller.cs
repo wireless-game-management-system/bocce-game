@@ -40,6 +40,8 @@ public class controller : MonoBehaviour
             Text4.text="LDV";
             
             btn.SetActive(false);   
+           // PlayerPrefs.SetString("team1",Text3.text);
+           // PlayerPrefs.SetString("team2",Text4.text);
 
         }
          

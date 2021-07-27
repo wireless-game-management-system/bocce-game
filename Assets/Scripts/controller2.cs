@@ -48,11 +48,13 @@ public class controller2 : MonoBehaviour
     
     
        {
-        
+        PlayerPrefs.SetString("team1", input1.text);
+        PlayerPrefs.SetString("team2", input2.text);
         int y= Int32.Parse(input.text);
         int minutes= y % 60;
         int hours=y/60;
         display2.text= hours.ToString("00")+ ':' +minutes.ToString("00");
+         PlayerPrefs.SetString("time", display2.text);
        }
         int x=0;
         if (input.text=="")
