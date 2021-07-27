@@ -44,7 +44,9 @@ public class timer : MonoBehaviour
             SceneManager.LoadScene("screen6"); 
          }
         Text1.text=PlayerPrefs.GetString("team1");
-        Text6.text=PlayerPrefs.GetString("team2");
+        Text2.text=PlayerPrefs.GetString("team1");
+        Text7.text=PlayerPrefs.GetString("player1_team1");
+        Text6.text=PlayerPrefs.GetString("player1_team2");
         Text5.text=PlayerPrefs.GetString("team2score");
         Text10.text=PlayerPrefs.GetString("team1score");
         timelimit += Time.deltaTime;
