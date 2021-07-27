@@ -17,10 +17,10 @@ public class screen3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if (Input.GetKey (KeyCode.P)) {  
+          if (Input.GetKeyDown(KeyCode.LeftArrow)) {  
             SceneManager.LoadScene("screen2"); 
     }
-         if (Input.GetKey (KeyCode.N)) {  
+          if (Input.GetKeyDown(KeyCode.RightArrow)) {  
             SceneManager.LoadScene("Bocce"); 
     }
     }

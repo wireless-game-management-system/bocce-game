@@ -16,6 +16,7 @@ public class BocceGame : MonoBehaviour
         RoundResult = 4,
         GameResult = 5,
     }
+    int gamecount = 0;
     static GameMode gameMode;
     static GameMode prevGameMode;
 
@@ -96,6 +97,8 @@ public class BocceGame : MonoBehaviour
 
     void Start()
     {
+
+        
         for (int i = 0; i < NumTeams; ++i)
         {
             teamBallDistanceSq [i] = new List<float>();
@@ -157,6 +160,15 @@ public class BocceGame : MonoBehaviour
 	
     void Update()
     {
+         if (Input.GetKeyDown(KeyCode.LeftArrow)) {  
+            SceneManager.LoadScene("screen3"); 
+         }
+            
+            
+                 if (Input.GetKeyDown(KeyCode.RightArrow)) {  
+            SceneManager.LoadScene("screen4"); 
+            
+    }
         // pausing
         if (Input.GetKeyDown(KeyCode.Escape))
             TogglePause();
@@ -166,10 +178,19 @@ public class BocceGame : MonoBehaviour
             switch (gameMode)
             {
                 case GameMode.Setup:
+<<<<<<< HEAD
                     {
                         //currentBall = jack = CreateBall();
                         // currentBall.transform.localScale *= 0.7f; // jack is smaller
 
+=======
+                    {   gamecount++;
+                        PlayerPrefs.SetString("gamecount",gamecount.ToString());
+                        
+                        currentBall = jack = CreateBall();
+                        currentBall.transform.localScale *= 0.7f; // jack is smaller
+                    
+>>>>>>> update
                         // random direction and force for the JACK
                         //Quaternion xQuaternion = Quaternion.AngleAxis(Random.Range(-20, 20), Vector3.up);
                         //Quaternion yQuaternion = Quaternion.AngleAxis(Random.Range(0, 15), -Vector3.right);
@@ -189,6 +210,7 @@ public class BocceGame : MonoBehaviour
                 case GameMode.Aiming:
                     {
                         if (Input.GetKeyDown(KeyCode.Space))
+<<<<<<< HEAD
                         {  
                             if(firstCounter == 0 || !jackThrowLegal)
                             {
@@ -202,6 +224,9 @@ public class BocceGame : MonoBehaviour
                             }
 
 
+=======
+                        {       // print(currentTeam);   ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ         
+>>>>>>> update
                             currentBall = CreateBall(currentTeam);
                             teamBalls [currentTeam] -= 1;
 
@@ -481,7 +506,7 @@ public class BocceGame : MonoBehaviour
             case GameMode.Setup:
                 {
                     // random team goes first
-                    currentTeam = Random.Range(0, 1);
+                    currentTeam = 0;
                     for (int i = 0; i < NumTeams; ++i)
                         teamBalls [i] = BallsPerTeam;
                 
@@ -611,7 +636,7 @@ public class BocceGame : MonoBehaviour
                 {                
                     int winningTeam = GetClosestTeam();
                     int losingTeam = (winningTeam == 0 ? 1 : 0);
-                    
+                   
                     List<float> winningDistances = GetBallDistances(winningTeam);
                     List<float> losingDistances = GetBallDistances(losingTeam);
 
@@ -624,6 +649,7 @@ public class BocceGame : MonoBehaviour
 
                     SetTeamScore(winningTeam, teamScore [winningTeam]);
                     SetMessageText("Team " + (winningTeam + 1).ToString() + " scores " + points.ToString() + " points!");
+<<<<<<< HEAD
                     
                     redCount = 0;
                     blueCount = 0;
@@ -639,7 +665,15 @@ public class BocceGame : MonoBehaviour
                     redName4.GetComponent<Text>().color = Color.white;
 
 
+=======
+                     PlayerPrefs.SetString("team1score",teamScore[losingTeam].ToString());
+                     PlayerPrefs.SetString("team2score",teamScore[winningTeam].ToString());
+                     PlayerPrefs.SetString("winningteam", winningTeam.ToString());
+                   PlayerPrefs.SetString("losingteam", losingTeam.ToString());
+                   
+>>>>>>> update
                     break;
+
                 }
             case GameMode.GameResult:
                 {
@@ -653,9 +687,11 @@ public class BocceGame : MonoBehaviour
                             winningTeam = i;
                         }
                     }
-                
+                   
                     SetMessageText("Team " + (winningTeam + 1).ToString() + " wins!", winningTeam);
                     SetHintMessageText("Press SPACE to return to main menu.");
+                    
+                   
                     break;
                 }
         }

@@ -26,7 +26,7 @@ public class controller : MonoBehaviour
     public void Awake()
 
     {
-       
+        // DontDestroyOnLoad(gameObject);
          Text5.text=  DateTime.Today.ToString("MM/dd/yyyy");
         
     } 
@@ -40,20 +40,24 @@ public class controller : MonoBehaviour
             Text4.text="LDV";
             
             btn.SetActive(false);   
+           // PlayerPrefs.SetString("team1",Text3.text);
+           // PlayerPrefs.SetString("team2",Text4.text);
 
         }
          
-
+   
     }
     void Update()
     {  
          
          if (input.text =="123")
     {
-        if (Input.GetKey (KeyCode.N)) {  
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {  
             SceneManager.LoadScene("screen2"); 
     }
-}}
+}
+
+}
 
        
 }
