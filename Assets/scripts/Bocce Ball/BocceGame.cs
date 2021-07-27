@@ -33,35 +33,36 @@ public class BocceGame : MonoBehaviour
     public Image blueBall3;
     public Image blueBall4;
 
+
     // game variables
     const int NumTeams = 2;
     const float MaxBallForce = 1000f;
     public Rigidbody BocceBallPrefab;
-    
+
     Rigidbody jack = null;
     Rigidbody currentBall = null;
-    
+
     // GUI
-    bool forceIncreasing = true;    
+    bool forceIncreasing = true;
     public Slider BallForceBar;
     public float ForceIncrement = 0.01f;
-    
+
     int[] teamScore = new int[NumTeams];
     public Text[] TeamScoreText = new Text[NumTeams];
     public Text MessageText;
     public Text HintMessageText;
-    
+
 
     float currentWaitTime = 0.0f;
     const float minWaitBetweenThrows = 1.0f; // seconds
-    
+
     public int BallsPerTeam = 4;
     public int WinningScore = 7;
-    
+
     int currentTeam; // which team's turn it is
     int[] teamBalls = new int[NumTeams];
     List<float>[] teamBallDistanceSq = new List<float>[NumTeams];
-    
+
     // menu
     public static bool Paused { get { return gameMode == GameMode.GameResult; } }
 
@@ -69,37 +70,38 @@ public class BocceGame : MonoBehaviour
     {
         for (int i = 0; i < NumTeams; ++i)
         {
-            teamBallDistanceSq [i] = new List<float>();
+            teamBallDistanceSq[i] = new List<float>();
             SetTeamScore(i, 0);
         }
-    
+
         SetGameMode(GameMode.Setup);
     }
-    
+
     #region Pause
-    
+
     void TogglePause()
     {
         Pause(!Paused);
     }
-    
+
     void Pause()
     {
         Pause(true);
     }
-    
+
     void Pause(bool pause)
     {
         if (gameMode == GameMode.Pause)
         {
             gameMode = prevGameMode;
-            
+
             Time.timeScale = 1.0f;
-        } else
+        }
+        else
         {
             prevGameMode = gameMode;
             gameMode = GameMode.Pause;
-            
+
             Time.timeScale = 0.0f;
         }
 
@@ -108,15 +110,15 @@ public class BocceGame : MonoBehaviour
         else
             Cursor.lockState = (gameMode == GameMode.Aiming) ? CursorLockMode.Locked : CursorLockMode.None;
     }
-    
+
     #endregion
-	
+
     void Update()
     {
         // pausing
         if (Input.GetKeyDown(KeyCode.Escape))
             TogglePause();
-        
+
         if (!Paused)
         {
             switch (gameMode)
@@ -125,28 +127,27 @@ public class BocceGame : MonoBehaviour
                     {
                         currentBall = jack = CreateBall();
                         currentBall.transform.localScale *= 0.7f; // jack is smaller
-                    
+
                         // random direction and force for the JACK
                         Quaternion xQuaternion = Quaternion.AngleAxis(Random.Range(-30, 30), Vector3.up);
                         Quaternion yQuaternion = Quaternion.AngleAxis(Random.Range(0, 15), -Vector3.right);
-                    
+
                         Quaternion originalRotation = transform.localRotation;
                         PlayerCamera.gameObject.transform.localRotation = originalRotation * xQuaternion * yQuaternion;
-                        
+
                         BallForceBar.value = Random.Range(0.5f, 0.89f);
-                    
+
                         ThrowBall(PlayerCamera.gameObject.transform.forward * (MaxBallForce * BallForceBar.value));
-                    
+
                         SetGameMode(GameMode.AimingFinish);
                         break;
                     }
                 case GameMode.Aiming:
                     {
                         if (Input.GetKeyDown(KeyCode.Space))
-                        {                        
+                        {
                             currentBall = CreateBall(currentTeam);
-                            teamBalls [currentTeam] -= 1;
-
+                            teamBalls[currentTeam] -= 1;
 
                             if (currentTeam == 0)
                             {
@@ -190,9 +191,10 @@ public class BocceGame : MonoBehaviour
 
 
                             ThrowBall(PlayerCamera.gameObject.transform.forward * (MaxBallForce * BallForceBar.value));
-                        
+
                             SetGameMode(GameMode.AimingFinish);
-                        } else
+                        }
+                        else
                         {
                             if (forceIncreasing)
                             {
@@ -202,7 +204,8 @@ public class BocceGame : MonoBehaviour
                                     BallForceBar.value = 1.0f;
                                     forceIncreasing = false;
                                 }
-                            } else
+                            }
+                            else
                             {
                                 BallForceBar.value -= ForceIncrement;
                                 if (BallForceBar.value <= 0.0f)
@@ -212,7 +215,7 @@ public class BocceGame : MonoBehaviour
                                 }
                             }
                         }
-                    
+
                         break;
                     }
                 case GameMode.AimingFinish:
@@ -226,10 +229,10 @@ public class BocceGame : MonoBehaviour
                                     int closestTeam = GetClosestTeam();
                                     currentTeam = (closestTeam == 0 ? 1 : 0);
                                     // if the team is out of balls let the other finish
-                                    if (teamBalls [currentTeam] == 0)
+                                    if (teamBalls[currentTeam] == 0)
                                         currentTeam = (currentTeam == 0 ? 1 : 0);
                                 }
-                                
+
                                 BocceBall jackComponent = jack.GetComponent<BocceBall>();
                                 if (jackComponent && !jackComponent.InBounds)
                                 {
@@ -241,13 +244,13 @@ public class BocceGame : MonoBehaviour
                                 else
                                     SetGameMode(teamBalls.Sum() > 0 ? GameMode.Aiming : GameMode.RoundResult);
                             }
-                        } else
+                        }
+                        else
                             currentWaitTime -= Time.deltaTime;
                         break;
                     }
                 case GameMode.RoundResult:
                     {
-
                         blueBall1.enabled = true;
                         blueBall2.enabled = true;
                         blueBall3.enabled = true;
@@ -258,7 +261,6 @@ public class BocceGame : MonoBehaviour
                         redBall3.enabled = true;
                         redBall4.enabled = true;
 
-
                         if (Input.GetKeyDown(KeyCode.Space))
                         {
                             if (teamScore.Max() >= WinningScore)
@@ -267,7 +269,7 @@ public class BocceGame : MonoBehaviour
                                 SetGameMode(GameMode.Setup);
                         }
                         break;
-                    }                    
+                    }
                 case GameMode.GameResult:
                     {
                         if (Input.GetKeyDown(KeyCode.Space))
@@ -277,9 +279,9 @@ public class BocceGame : MonoBehaviour
             }
         }
     }
-    
+
     #region Events
-    
+
     void OnApplicationFocus(bool focusStatus)
     {
         if (!Paused && !focusStatus)
@@ -287,12 +289,10 @@ public class BocceGame : MonoBehaviour
     }
 
     #endregion
-
     void displayMessage()
     {
         SetHintMessageText("Invalid Throw!!");
     }
-
     bool AreBallsMoving()
     {
         IEnumerable<GameObject> gameObjects = GameObject.FindGameObjectsWithTag("BocceBall");
@@ -302,19 +302,19 @@ public class BocceGame : MonoBehaviour
                 return true;
             return false;
         }) > 0;
-        
+
         return inMotion;
     }
-    
+
     List<float> GetBallDistances(int team)
     {
         List<float> distances = new List<float>();
-    
+
         IEnumerable<GameObject> gameObjects = GameObject.FindGameObjectsWithTag("BocceBall").Where(gameObject => {
             BocceBall component = gameObject.GetComponent<BocceBall>();
             return (component && component.Team == team && component.InBounds);
         });
-        
+
         foreach (GameObject gameObject in gameObjects)
         {
             BocceBall component = gameObject.GetComponent<BocceBall>();
@@ -324,21 +324,21 @@ public class BocceGame : MonoBehaviour
                 distances.Add(distanceSq);
             }
         }
-        
+
         return distances;
     }
-    
+
     int GetClosestTeam()
     {
         int team = currentTeam;
-        
+
         float nearestDistanceSq = Mathf.Infinity;
         for (int i = 0; i < NumTeams; ++i)
         {
             List<float> distances = GetBallDistances(i);
             if (distances.Count() == 0)
                 continue;
-            
+
             float distanceSq = distances.Min();
             if (distanceSq < nearestDistanceSq)
             {
@@ -346,29 +346,29 @@ public class BocceGame : MonoBehaviour
                 team = i;
             }
         }
-        
+
         return team;
     }
-    
+
     Color GetTeamColor(int team)
     {
         if (team < 0 || team >= NumTeams)
             return Color.white;
-        return TeamScoreText [team].GetComponent<Text>().color;
+        return TeamScoreText[team].GetComponent<Text>().color;
     }
-    
+
     void SetTeamScore(int team, int score)
     {
-        teamScore [team] = score;
-        TeamScore component = TeamScoreText [team].GetComponent<TeamScore>();
+        teamScore[team] = score;
+        TeamScore component = TeamScoreText[team].GetComponent<TeamScore>();
         if (component)
             component.SetScore(score);
     }
-    
+
     void SetGameMode(GameMode gameMode_)
     {
         Cursor.lockState = CursorLockMode.None;
-        
+
         switch (gameMode_)
         {
             case GameMode.Setup:
@@ -376,21 +376,21 @@ public class BocceGame : MonoBehaviour
                     // random team goes first
                     currentTeam = Random.Range(0, 1);
                     for (int i = 0; i < NumTeams; ++i)
-                        teamBalls [i] = BallsPerTeam;
-                
+                        teamBalls[i] = BallsPerTeam;
+
                     // get rid of all the previous balls
                     IEnumerable<GameObject> gameObjects = GameObject.FindGameObjectsWithTag("BocceBall");
                     foreach (GameObject gameObject in gameObjects)
                         GameObject.Destroy(gameObject);
                     jack = null;
-                
+
                     SetHintMessageText("Throwing the jack!");
                     break;
                 }
             case GameMode.Aiming:
                 {
                     Cursor.lockState = CursorLockMode.Locked;
-                    
+
                     SetMessageText("Team " + (currentTeam + 1) + "'s turn!", currentTeam);
                     SetHintMessageText("Press SPACE to throw ball.");
                     break;
@@ -398,27 +398,27 @@ public class BocceGame : MonoBehaviour
             case GameMode.AimingFinish:
                 {
                     currentWaitTime = minWaitBetweenThrows;
-                
+
                     SetMessageText("Waiting for balls to stop...");
                     SetHintMessageText("");
                     break;
                 }
             case GameMode.RoundResult:
-                {                
+                {
                     int winningTeam = GetClosestTeam();
                     int losingTeam = (winningTeam == 0 ? 1 : 0);
-                    
+
                     List<float> winningDistances = GetBallDistances(winningTeam);
                     List<float> losingDistances = GetBallDistances(losingTeam);
-                    
+
                     int points;
                     if (losingDistances.Count() == 0) // how'd this player throw all their balls out of bounds?
                         points = winningDistances.Count();
                     else
                         points = winningDistances.Count(distanceSq => distanceSq < losingDistances.Min());
-                    teamScore [winningTeam] += points;
-                
-                    SetTeamScore(winningTeam, teamScore [winningTeam]);
+                    teamScore[winningTeam] += points;
+
+                    SetTeamScore(winningTeam, teamScore[winningTeam]);
                     SetMessageText("Team " + (winningTeam + 1).ToString() + " scores " + points.ToString() + " points!");
                     break;
                 }
@@ -428,74 +428,74 @@ public class BocceGame : MonoBehaviour
                     int highScore = 0;
                     for (int i = 0; i < NumTeams; ++i)
                     {
-                        if (teamScore [i] > highScore)
+                        if (teamScore[i] > highScore)
                         {
-                            highScore = teamScore [i];
+                            highScore = teamScore[i];
                             winningTeam = i;
                         }
                     }
-                
+
                     SetMessageText("Team " + (winningTeam + 1).ToString() + " wins!", winningTeam);
                     SetHintMessageText("Press SPACE to return to main menu.");
                     break;
                 }
         }
-        
+
         MainCamera.gameObject.SetActive(gameMode_ != GameMode.Aiming);
         PlayerCamera.gameObject.SetActive(gameMode_ == GameMode.Aiming);
         //BallForceBar.gameObject.SetActive(gameMode_ == GameMode.Aiming);
-    
+
         prevGameMode = gameMode;
         gameMode = gameMode_;
     }
-    
+
     #region SetMessageText
-    
+
     void SetMessageText(string message_)
     {
 
         SetMessageText(message_, -1);
     }
-    
+
     void SetMessageText(string message_, int team)
     {
         MessageText.GetComponent<Text>().text = message_;
         MessageText.GetComponent<Text>().color = GetTeamColor(team);
     }
-    
+
     #endregion
-    
+
     void SetHintMessageText(string message_)
     {
         HintMessageText.GetComponent<Text>().text = message_;
     }
-    
+
     #region CreateBall
-    
+
     Rigidbody CreateBall()
     {
         return CreateBall(-1);
     }
-    
+
     Rigidbody CreateBall(int team_)
     {
         return CreateBall(team_, PlayerCamera.gameObject.transform.position);
     }
-    
+
     Rigidbody CreateBall(int team_, Vector3 position_)
     {
         Rigidbody rigidBody = (Rigidbody)Instantiate(BocceBallPrefab, position_, new Quaternion());
         BocceBall component = rigidBody.GetComponent<BocceBall>();
         if (component)
             component.Team = team_;
-        rigidBody.GetComponent<Renderer>().material.color = GetTeamColor(team_);            
+        rigidBody.GetComponent<Renderer>().material.color = GetTeamColor(team_);
         return rigidBody;
     }
-    
+
     #endregion
-    
+
     void ThrowBall(Vector3 force)
     {
         currentBall.AddForce(force);
-    } 
+    }
 }
