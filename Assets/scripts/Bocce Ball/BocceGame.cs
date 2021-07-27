@@ -57,9 +57,9 @@ public class BocceGame : MonoBehaviour
     private int redCount = 0;
     private int blueCount = 0;
 
-    private string[] blueTeamMemberName = {"Jay", "Richard", "Daniel", "Gabin"};
-    private string[] redTeamMemberName = { "Miley", "Rob", "Gandhi", "AK" };
-
+    //private string[] blueTeamMemberName = { PlayerPrefs.GetString("player1_team1"), PlayerPrefs.GetString("player2_team1"), PlayerPrefs.GetString("player3_team1"), PlayerPrefs.GetString("player4_team1")};
+    //private string[] redTeamMemberName = { PlayerPrefs.GetString("player1_team2"), PlayerPrefs.GetString("player2_team2"), PlayerPrefs.GetString("player3_team2"), PlayerPrefs.GetString("player4_team2") };
+    
     // game variables
     const int NumTeams = 2;
     const float MaxBallForce = 1000f;
@@ -98,9 +98,11 @@ public class BocceGame : MonoBehaviour
     void Start()
     {
 
-        
+         string[] blueTeamMemberName = { PlayerPrefs.GetString("player1_team1"), PlayerPrefs.GetString("player2_team1"), PlayerPrefs.GetString("player3_team1"), PlayerPrefs.GetString("player4_team1")};
+     string[] redTeamMemberName = { PlayerPrefs.GetString("player1_team2"), PlayerPrefs.GetString("player2_team2"), PlayerPrefs.GetString("player3_team2"), PlayerPrefs.GetString("player4_team2") };
         for (int i = 0; i < NumTeams; ++i)
-        {
+
+        { 
             teamBallDistanceSq [i] = new List<float>();
             SetTeamScore(i, 0);
         }
