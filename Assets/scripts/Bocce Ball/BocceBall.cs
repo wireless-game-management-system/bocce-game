@@ -11,8 +11,9 @@ public class BocceBall : MonoBehaviour
     private Material matWhite;
     private Material defaultGameObjectMaterial;
     private GameObject currentGameObjectName;
+    public GameObject centerLine;
 
-    private bool touchedBoundary = false;
+    public bool touchedBoundary = false;
 
     void Start()
     {
@@ -100,6 +101,10 @@ public class BocceBall : MonoBehaviour
                         {
                             return false;
                         }
+                        if(transform.position.z < centerLine.transform.position.z)
+                        {
+                            return false;
+                        }
                         break;
                     case "WestWall":
                         if (transform.position.x < gameObject.transform.position.x)
@@ -107,6 +112,10 @@ public class BocceBall : MonoBehaviour
                             return false;
                         }
                         if (touchedBoundary)
+                        {
+                            return false;
+                        }
+                        if (transform.position.z < centerLine.transform.position.z)
                         {
                             return false;
                         }
@@ -120,6 +129,10 @@ public class BocceBall : MonoBehaviour
                         {
                             return false;
                         }
+                        if (transform.position.z < centerLine.transform.position.z)
+                        {
+                            return false;
+                        }
                         break;
                     case "SouthWall":
                         if (transform.position.z < gameObject.transform.position.z)
@@ -127,6 +140,10 @@ public class BocceBall : MonoBehaviour
                             return false;
                         }
                         if (touchedBoundary)
+                        {
+                            return false;
+                        }
+                        if (transform.position.z < centerLine.transform.position.z)
                         {
                             return false;
                         }
