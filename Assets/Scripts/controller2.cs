@@ -5,11 +5,14 @@ using UnityEngine.UI;
 using System;
 using System.Globalization;
 using UnityEngine.SceneManagement;
+using Firebase.Unity;
+using Firebase.Database;
 
 public class controller2 : MonoBehaviour
 
 {
-
+    DatabaseReference reference;
+    string todaysDate;
     [SerializeField]
     private InputField input;
      [SerializeField]
@@ -35,7 +38,8 @@ public class controller2 : MonoBehaviour
     void Start()
     {
         display.text=  DateTime.Now.ToString("HH:mm:ss tt");
-       
+        reference = FirebaseDatabase.DefaultInstance.RootReference;
+        todaysDate = DateTime.Now.ToString("MMMM-dd-yyyy");
     }
 
     // Update is called once per frame
@@ -69,9 +73,15 @@ public class controller2 : MonoBehaviour
          }
             if (x==0)
             {
-                  if (Input.GetKeyDown(KeyCode.RightArrow)) {  
-            SceneManager.LoadScene("screen3"); 
-            }}
+            if (Input.GetKeyDown(KeyCode.RightArrow)) 
+            {
+                string TeamVsTeam = input1.text + " vs " + input2.text;
+                SceneManager.LoadScene("screen3");
+                
+               // reference.Child("Game").SetValueAsync(todaysDate);
+               // reference.Child("Game").Child(todaysDate).SetValueAsync(TeamVsTeam);
+            }
+        }
 
            
             else {display0.text="All fields must be filled";}

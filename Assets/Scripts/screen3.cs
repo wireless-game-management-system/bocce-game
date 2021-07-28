@@ -5,11 +5,13 @@ using UnityEngine.UI;
 using System;
 using System.Globalization;
 using UnityEngine.SceneManagement;
+using Firebase.Database;
 
 public class screen3 : MonoBehaviour
 {
-
-   [SerializeField]
+    string todaysDate;
+    DatabaseReference reference;
+    [SerializeField]
     private InputField input1;
      [SerializeField]
     private InputField input2;
@@ -33,8 +35,10 @@ public class screen3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         Team1.text=PlayerPrefs.GetString("team1");
+        Team1.text=PlayerPrefs.GetString("team1");
         Team2.text=PlayerPrefs.GetString("team2");
+        todaysDate = DateTime.Now.ToString("MMMM-dd-yyyy");
+        reference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
     // Update is called once per frame
@@ -54,7 +58,26 @@ public class screen3 : MonoBehaviour
             SceneManager.LoadScene("screen2"); 
     }
           if (Input.GetKeyDown(KeyCode.RightArrow)) {  
-            SceneManager.LoadScene("Bocce"); 
+           // SceneManager.LoadScene("Bocce"); 
     }
     }
+
+    public void onSubmit()
+    {
+        string[] teamOnePlayer = {input1.text, input2.text, input3.text, input4.text };
+        string[] teamTwoPlayer = { input5.text, input6.text, input7.text, input8.text }; 
+        string TeamVsTeam = Team1.text + " vs " + Team2.text;
+
+        for (int i = 0; i<teamOnePlayer.Length; i++)
+        {
+            reference.Child("Game").Child("Date").Child(todaysDate).Child("Team vs Team").Child(TeamVsTeam).Child(Team1.text.ToString()).Child(teamOnePlayer[i]).SetValueAsync("");
+        }
+        for (int i = 0; i < teamTwoPlayer.Length; i++)
+        {
+            reference.Child("Game").Child("Date").Child(todaysDate).Child("Team vs Team").Child(TeamVsTeam).Child(Team2.text.ToString()).Child(teamTwoPlayer[i]).SetValueAsync("");
+        }
+
+        SceneManager.LoadScene("Bocce");
+    }
+
 }
