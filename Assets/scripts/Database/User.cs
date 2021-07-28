@@ -6,19 +6,19 @@ using UnityEngine;
 [SerializeField]
 public class User : MonoBehaviour
 {
-    public string userName;
-    public int userScore;
-    public string teamName;
-    public string teamMateName;
-    public int ballLocation;
+    public string UserName;
+    public int UserScore;
+    public string TeamName;
+    public string TeamMateName;
+    public int BallLocation;
 
     public User()
     {
-        userName = DatabaseTest.playerName;
-        userScore = DatabaseTest.playerScore;
-        teamName = DatabaseTest.teamName;
-        teamMateName = DatabaseTest.teamMate;
-        ballLocation = DatabaseTest.ballLocation;
+        UserName = DatabaseTest.playerName;
+        UserScore = DatabaseTest.playerScore;
+        TeamName = DatabaseTest.teamName;
+        TeamMateName = DatabaseTest.teamMate;
+        BallLocation = DatabaseTest.ballLocation;
 
     }
 }

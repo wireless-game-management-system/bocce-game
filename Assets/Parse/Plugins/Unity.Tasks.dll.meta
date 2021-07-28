@@ -14,6 +14,7 @@ PluginImporter:
   isPreloaded: 0
   platformData:
     Any:
+<<<<<<< Updated upstream
       enabled: 1
       settings: {}
     Editor:
@@ -71,6 +72,14 @@ PluginImporter:
       settings:
         CompileFlags:
         FrameworkDependencies:
+=======
+      enabled: 0
+      settings: {}
+    Editor:
+      enabled: 0
+      settings:
+        DefaultValueInitialized: true
+>>>>>>> Stashed changes
   userData:
   assetBundleName:
   assetBundleVariant:
