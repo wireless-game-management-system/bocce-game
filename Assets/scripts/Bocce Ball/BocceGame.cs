@@ -70,7 +70,7 @@ public class BocceGame : MonoBehaviour
     private int firstCounter = 0; //for pallino
     private bool jackThrowLegal=true;
     private bool isJackInGame = false;
-    
+    private int gameCount = 0;
     // GUI
     bool forceIncreasing = true;    
     public Slider BallForceBar;
@@ -180,11 +180,11 @@ public class BocceGame : MonoBehaviour
             switch (gameMode)
             {
                 case GameMode.Setup:
-                    {   gamecount++;
-                        PlayerPrefs.SetString("gamecount",gamecount.ToString());
+                    {
                         
-                        currentBall = jack = CreateBall();
-                        currentBall.transform.localScale *= 0.7f; // jack is smaller
+                        
+                        //currentBall = jack = CreateBall();
+                        //currentBall.transform.localScale *= 0.7f; // jack is smaller
                     
                         // random direction and force for the JACK
                         //Quaternion xQuaternion = Quaternion.AngleAxis(Random.Range(-20, 20), Vector3.up);
@@ -658,8 +658,10 @@ public class BocceGame : MonoBehaviour
                      PlayerPrefs.SetString("team1score",teamScore[losingTeam].ToString());
                      PlayerPrefs.SetString("team2score",teamScore[winningTeam].ToString());
                      PlayerPrefs.SetString("winningteam", winningTeam.ToString());
-                   PlayerPrefs.SetString("losingteam", losingTeam.ToString());
-                   
+                     PlayerPrefs.SetString("losingteam", losingTeam.ToString());
+
+                    gameCount++;
+                    PlayerPrefs.SetString("gamecount", gameCount.ToString());
                     break;
 
                 }
