@@ -13,6 +13,7 @@ public class AuthManager : MonoBehaviour
     public InputField emailField;
     public InputField passwordField;
     public Button signInButton;
+    public Button registerButton;
 
     public static FirebaseApp firebaseApp;
     public static FirebaseAuth firebaseAuth;
@@ -22,6 +23,7 @@ public class AuthManager : MonoBehaviour
     public void Start()
     {
         signInButton.interactable = false;
+        
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(continuationAction: task =>
         { 
             var result = task.Result;
@@ -78,9 +80,30 @@ public class AuthManager : MonoBehaviour
             {
                 User = task.Result;
                 Debug.Log(User.Email);
-                SceneManager.LoadScene("Lobby");
+                SceneManager.LoadScene("screen1");
             }
 
         });
     }
+
+    public void Register()
+    {
+        firebaseAuth.CreateUserWithEmailAndPasswordAsync(emailField.text, passwordField.text).ContinueWith(task => {
+            if (task.IsCanceled)
+            {
+                Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+                return;
+            }
+
+            // Firebase user has been created.
+            Firebase.Auth.FirebaseUser newUser = task.Result;
+            Debug.Log("Successfully Registered! Sign in Now");
+        });
+    }
+
 }
