@@ -40,6 +40,10 @@ public class scree_4 : MonoBehaviour
     public static string teamA;
     public static string teamB;
     public Text game;
+<<<<<<< Updated upstream
+=======
+    public int cnt;
+>>>>>>> Stashed changes
     Team team = new Team();
     
     void Start()
@@ -95,10 +99,17 @@ public class scree_4 : MonoBehaviour
 
     public void saveData()
     {
+<<<<<<< Updated upstream
 
         Team team = new Team();
         
         RestClient.Put("https://unity-game-767f2-default-rtdb.firebaseio.com/" + game.text + ".json", team);
+=======
+        cnt = int.Parse(b1.text);
+        Team team = new Team();
+        
+        RestClient.Put("https://unity-game-767f2-default-rtdb.firebaseio.com/" + cnt + ".json", team);
+>>>>>>> Stashed changes
 
         /*
         string TeamVsTeam = t1.text + " vs " + t2.text;
@@ -126,8 +137,13 @@ public class scree_4 : MonoBehaviour
             showInfo.text = "Informaton: " + response.ToString();
         });*/
 
+<<<<<<< Updated upstream
         
         RestClient.Get("https://unity-game-767f2-default-rtdb.firebaseio.com/" + game.text + ".json").Then(response =>
+=======
+        cnt = int.Parse(b1.text);
+        RestClient.Get("https://unity-game-767f2-default-rtdb.firebaseio.com/" + cnt + ".json").Then(response =>
+>>>>>>> Stashed changes
         {
 
             
