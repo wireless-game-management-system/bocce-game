@@ -5,35 +5,54 @@ using UnityEngine.UI;
 using System;
 using System.Globalization;
 using UnityEngine.SceneManagement;
+using Firebase;
+using Firebase.Auth;
+using Firebase.Database;
+using Firebase.Unity;
+
 
 public class controller2 : MonoBehaviour
 
 {
 
     [SerializeField]
-    private InputField input;
+    public InputField input;
      [SerializeField]
-    private InputField input1;
+    public InputField input1;
      [SerializeField]
-    private InputField input2;
+    public InputField input2;
+    //[SerializeField]
+    //private GameObject BUtton1;
     [SerializeField]
-    private GameObject BUtton1;
+    public Text display0;
     [SerializeField]
-    private Text display0;
+    public Text display;
     [SerializeField]
-    private Text display;
-    [SerializeField]
-    private Text display1;
+    public Text display1;
      [SerializeField]
-    private Text display2;
+    public Text display2;
      [SerializeField]
-    private Text display8;
+    public Text display8;
      [SerializeField]
-    private Text display9; 
-   
+    public Text display9;
+
+    public InputField teamName;
+    public InputField teamName2;
+    public InputField playerName1;
+    public InputField playerName2;
+
+    DateTime dateTime = DateTime.Now;
+    string todaysDate;
+
+
+    public Button saveButton;
+
+  
+
     // Start is called before the first frame update
     void Start()
     {
+     
         display.text=  DateTime.Now.ToString("HH:mm:ss tt");
     }
 
